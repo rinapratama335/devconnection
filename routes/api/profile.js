@@ -361,7 +361,7 @@ router.get("/github/:username", (req, res) => {
     });
   } catch (err) {
     console.error(err.message);
-    return status(5000).send("Server error");
+    res.status(500).send("Server error");
   }
 });
 
