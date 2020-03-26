@@ -31,11 +31,6 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     </ul>
   );
 
-  //Redirect if logged in
-  if (!isAuthenticated) {
-    return <Redirect to="/" />;
-  }
-
   return (
     <nav className="navbar bg-dark">
       <h1>
