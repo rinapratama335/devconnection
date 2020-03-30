@@ -6,7 +6,7 @@ const request = require("request");
 const config = require("config");
 
 const Profile = require("../../models/Profile");
-const user = require("../../models/User");
+const User = require("../../models/User");
 
 // @route               GET api/profile/me
 // @desc                Get current user profile
@@ -53,6 +53,8 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
+    console.log(req.body.skills);
+
     const {
       company,
       website,
@@ -78,8 +80,16 @@ router.post(
     if (bio) profileFields.bio = bio;
     if (status) profileFields.status = status;
     if (githubusername) profileFields.githubusername = githubusername;
-    if (skills) {
-      profileFields.skills = skills.split(",").map(skill => skill.trim());
+    if (typeof skills == new Array()) {
+      if (skill.length < 1) {
+        profileFields.skills = new Array();
+      } else {
+        profileFields.skills = skills.map(skill => skill.trim());
+      }
+    } else {
+      if (skills) {
+        profileFields.skills = skills.split(",").map(skill => skill.trim());
+      }
     }
 
     //Build social object
