@@ -5,6 +5,7 @@ import { getCurrentProfile } from "../../actions/profile";
 import { Link } from "react-router-dom";
 
 import Spinner from "../layout/Spinner";
+import DashboardAction from "./DashboardAction";
 
 const Dashboard = ({
   getCurrentProfile,
@@ -13,6 +14,8 @@ const Dashboard = ({
 }) => {
   useEffect(() => {
     getCurrentProfile();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return loading && profile === null ? (
@@ -24,7 +27,9 @@ const Dashboard = ({
         <i className="fas fa-user"></i> Welcome {user && user.name}
       </p>
       {profile !== null ? (
-        <Fragment>Has</Fragment>
+        <Fragment>
+          <DashboardAction />
+        </Fragment>
       ) : (
         <Fragment>
           <p>You have not yet setup a profile, please add some info</p>
