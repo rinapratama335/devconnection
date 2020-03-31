@@ -26,7 +26,7 @@ export default function(state = initialState, action) {
         profile: payload,
         loading: false
       };
-    case GET_PROFILES:
+    case GET_PROFILES: //get all profiles
       return {
         ...state,
         profiles: payload,
@@ -45,7 +45,7 @@ export default function(state = initialState, action) {
         repos: [],
         loading: false
       };
-    case GET_REPOS:
+    case GET_REPOS: //get github repos
       return {
         ...state,
         repos: payload,
