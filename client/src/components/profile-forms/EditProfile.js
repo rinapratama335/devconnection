@@ -238,7 +238,7 @@ const EditProfile = ({
           </Fragment>
         )}
 
-        <input type="submit" className="btn btn-primary my-1" />
+        <input type="submit" className="btn btn-primary my-1" value="Save" />
         <a className="btn btn-light my-1" href="dashboard.html">
           Go Back
         </a>
@@ -257,6 +257,7 @@ const mapStateToProps = state => ({
   profile: state.profile
 });
 
-export default connect(mapStateToProps, { createProfile, getCurrentProfile })(
-  withRouter(EditProfile)
-);
+export default connect(
+  mapStateToProps,
+  { createProfile, getCurrentProfile }
+)(withRouter(EditProfile));
